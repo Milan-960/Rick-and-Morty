@@ -17,6 +17,7 @@ const SceneList = () => {
   const [newSceneLocation, setNewSceneLocation] = useState("");
   const [newSceneCharacters, setNewSceneCharacters] = useState<Character[]>([]);
 
+  // Add a new scene
   const handleAddScene = () => {
     const newScene: SceneData = {
       id: String(scenes.length + 1),
@@ -32,12 +33,14 @@ const SceneList = () => {
     setNewSceneCharacters([]);
   };
 
+  // Remove a scene
   const handleRemoveScene = (sceneId: string) => {
     setScenes((prevScenes) =>
       prevScenes.filter((scene) => scene.id !== sceneId)
     );
   };
 
+  // Remove a character from a scene
   const handleRemoveCharacter = (sceneId: string, characterId: string) => {
     setScenes((prevScenes) =>
       prevScenes.map((scene) => {
@@ -53,6 +56,7 @@ const SceneList = () => {
     );
   };
 
+  // Handle character selection
   const handleCharacterSelection = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -66,6 +70,7 @@ const SceneList = () => {
     setNewSceneCharacters(selectedCharacters);
   };
 
+  // Set default location and character when data is fetched
   useEffect(() => {
     if (charactersData && locationsData) {
       const defaultLocation = locationsData.locations.results[0].name;
@@ -83,6 +88,35 @@ const SceneList = () => {
       console.error("Error saving scene data to local storage", error);
     }
   }, [scenes]);
+
+  // RenderScenes function
+  const renderScenes = () => (
+    <div className="scenes-list">
+      {scenes.map((scene) => (
+        <div key={scene.id} className="scene">
+          <h3>Scene {scene.id}</h3>
+          <p>Description: {scene.description}</p>
+          <p>Location: {scene.location}</p>
+          <p>
+            Characters:{" "}
+            {scene.characters.map((character) => (
+              <span key={character.id}>
+                {character.name}
+                <button
+                  onClick={() => handleRemoveCharacter(scene.id, character.id)}
+                >
+                  Remove
+                </button>
+              </span>
+            ))}
+          </p>
+          <button onClick={() => handleRemoveScene(scene.id)}>
+            Remove Scene
+          </button>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="scene-list">
@@ -132,33 +166,7 @@ const SceneList = () => {
         </form>
       </div>
 
-      <div className="scenes-list">
-        {scenes.map((scene) => (
-          <div key={scene.id} className="scene">
-            <h3>Scene {scene.id}</h3>
-            <p>Description: {scene.description}</p>
-            <p>Location: {scene.location}</p>
-            <p>
-              Characters:{" "}
-              {scene.characters.map((character) => (
-                <span key={character.id}>
-                  {character.name}
-                  <button
-                    onClick={() =>
-                      handleRemoveCharacter(scene.id, character.id)
-                    }
-                  >
-                    Remove
-                  </button>
-                </span>
-              ))}
-            </p>
-            <button onClick={() => handleRemoveScene(scene.id)}>
-              Remove Scene
-            </button>
-          </div>
-        ))}
-      </div>
+      {renderScenes()}
     </div>
   );
 };
