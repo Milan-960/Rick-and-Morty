@@ -1,45 +1,81 @@
-# Getting Started with Create React App
+# Rick and Morty Episode Scenes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The Rick and Morty writing team needs a software tool to help them draft the scenes for their episodes in the upcoming season. For a given episode, they would like the tool to:
 
-## Available Scripts
+- Add or remove scenes to the episode
 
-In the project directory, you can run:
+- Add or remove characters per scene
 
-### `npm start`
+- Set the scene’s location
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Set a text description for the scene
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Using the [Rick and Morty GraphQL](https://rickandmortyapi.com/graphql) API as a data source for characters and locations, write an application that uses React and Typescript to accomplish the given requirements.
 
-### `npm test`
+<hr>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Folder Structure!
 
-### `npm run build`
+```
+ ┣ 📂public
+ ┃ ┣ 📜favicon.ico
+ ┃ ┣ 📜index.html
+ ┃ ┣ 📜manifest.json
+ ┃ ┣ 📜rick.png
+ ┃ ┗ 📜robots.txt
+ ┣ 📂src
+ ┃ ┣ 📂Components
+ ┃ ┃ ┗ 📜SceneList.tsx
+ ┃ ┣ 📂Graphql
+ ┃ ┃ ┗ 📜Index.ts
+ ┃ ┣ 📜App.css
+ ┃ ┣ 📜App.test.tsx
+ ┃ ┣ 📜App.tsx
+ ┃ ┣ 📜index.css
+ ┃ ┣ 📜index.tsx
+ ┃ ┣ 📜logo.svg
+ ┃ ┣ 📜react-app-env.d.ts
+ ┃ ┣ 📜reportWebVitals.ts
+ ┃ ┣ 📜service-worker.ts
+ ┃ ┣ 📜serviceWorkerRegistration.ts
+ ┃ ┗ 📜setupTests.ts
+ ┣ 📜.gitignore
+ ┣ 📜README.md
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┗ 📜tsconfig.json
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# **How to start this project!**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Note This project was created using node version **v18.16.0**
 
-### `npm run eject`
+## clone the branch
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+git clone https://github.com/Milan-960/Rick-and-Morty.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Install dependecies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+yarn install
+# or
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## run on the localhost
 
-## Learn More
+```
+yarn start
+# or
+npm start
+```
+
+<hr>
+
+# Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
